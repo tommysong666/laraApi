@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::prefix('v1')->name('api.')->group(function (){
-
+Route::prefix('v1')->name('api.v1.')->namespace('Api')->group(function (){
+    Route::post('verificationCodes','VerificationCodesController@store')->name('verificationCodes.store');
 });
+
 
 

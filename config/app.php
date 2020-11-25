@@ -161,6 +161,8 @@ return [
         Overtrue\LaravelLang\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        //自定义短信验证码提供者
+        \App\Providers\EasySmsServiceProvider::class,
 
         /*
          * Package Service Providers...

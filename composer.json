@@ -9,8 +9,10 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
+        "gregwar/captcha": "^1.1",
         "guzzlehttp/guzzle": "~6.3",
         "intervention/image": "^2.5",
         "laravel/framework": "^7.0",
@@ -25,8 +27,7 @@
         "spatie/laravel-permission": "~3.0",
         "summerblue/administrator": "7.*",
         "summerblue/laravel-active": "7.*",
-        "viacreative/sudo-su": "~1.1",
-        "doctrine/dbal": "^2.10"
+        "viacreative/sudo-su": "~1.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "~3.2",

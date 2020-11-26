@@ -22,11 +22,10 @@ Route::prefix('v1')
             Route::post('verificationCodes', 'VerificationCodesController@store')->name('verificationCodes.store');
             //用户注册
             Route::post('users', 'UsersController@store')->name('users.store');
+            //获取图片验证码
+            Route::post('captchas','CaptchasController@store')->name('captchas.store');
         });
         Route::middleware('throttle:' . config('api.rate_limits.access'))->group(function () {
-            
+
         });
     });
-
-
-

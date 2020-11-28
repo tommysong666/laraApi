@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements MustVerifyEmailContract
+class User extends Authenticatable implements MustVerifyEmailContract,JWTSubject
 {
     use Traits\LastActivedAtHelper;
 
@@ -45,6 +46,9 @@ class User extends Authenticatable implements MustVerifyEmailContract
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at'=>'datetime',
+        'updated_at'=>'datetime',
+        'last_actived_at'=>'datetime',
     ];
 
     public function topics()
@@ -91,5 +95,14 @@ class User extends Authenticatable implements MustVerifyEmailContract
         }
 
         $this->attributes['avatar'] = $path;
+    }
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

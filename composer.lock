@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e51626b0564a33819cc9b503f988ad5",
+    "content-hash": "2acb1a2ee9ca88d473794c81fbabd8c7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1897,16 +1897,16 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.4.1",
+            "version": "3.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "958a9873a63b0244a72f6e354ccc86019ee674a5"
+                "reference": "c1123697f6a2ec29162b82f170dd4a491f524773"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/958a9873a63b0244a72f6e354ccc86019ee674a5",
-                "reference": "958a9873a63b0244a72f6e354ccc86019ee674a5",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/c1123697f6a2ec29162b82f170dd4a491f524773",
+                "reference": "c1123697f6a2ec29162b82f170dd4a491f524773",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1927,9 +1927,6 @@
                 "phpunit/phpunit": "^5.7 || ^7.3",
                 "squizlabs/php_codesniffer": "~2.3"
             },
-            "suggest": {
-                "lcobucci/clock": "*"
-            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1939,12 +1936,7 @@
             "autoload": {
                 "psr-4": {
                     "Lcobucci\\JWT\\": "src"
-                },
-                "files": [
-                    "compat/class-aliases.php",
-                    "compat/json-exception-polyfill.php",
-                    "compat/lcobucci-clock-polyfill.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1964,7 +1956,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lcobucci/jwt/issues",
-                "source": "https://github.com/lcobucci/jwt/tree/3.4.1"
+                "source": "https://github.com/lcobucci/jwt/tree/3.3.3"
             },
             "funding": [
                 {
@@ -1976,7 +1968,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-11-27T01:17:14+00:00"
+            "time": "2020-08-20T13:22:28+00:00"
         },
         {
             "name": "league/commonmark",
@@ -3907,16 +3899,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "3.17.0",
+            "version": "3.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "35d40a45e49f5713f477823b571e05ef6a3a0394"
+                "reference": "1c51a5fa12131565fe3860705163e53d7a26258a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/35d40a45e49f5713f477823b571e05ef6a3a0394",
-                "reference": "35d40a45e49f5713f477823b571e05ef6a3a0394",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/1c51a5fa12131565fe3860705163e53d7a26258a",
+                "reference": "1c51a5fa12131565fe3860705163e53d7a26258a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3930,7 +3922,7 @@
                 "illuminate/container": "^5.8|^6.0|^7.0|^8.0",
                 "illuminate/contracts": "^5.8|^6.0|^7.0|^8.0",
                 "illuminate/database": "^5.8|^6.0|^7.0|^8.0",
-                "php": "^7.2.5"
+                "php": "^7.2.5|^8.0"
             },
             "require-dev": {
                 "orchestra/testbench": "^3.8|^4.0|^5.0|^6.0",
@@ -3979,15 +3971,15 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
-                "source": "https://github.com/spatie/laravel-permission/tree/3.17.0"
+                "source": "https://github.com/spatie/laravel-permission/tree/3.18.0"
             },
             "funding": [
                 {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
+                    "url": "https://github.com/spatie",
+                    "type": "github"
                 }
             ],
-            "time": "2020-09-16T16:47:18+00:00"
+            "time": "2020-11-09T14:08:36+00:00"
         },
         {
             "name": "summerblue/administrator",
@@ -6656,16 +6648,16 @@
         },
         {
             "name": "tymon/jwt-auth",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tymondesigns/jwt-auth.git",
-                "reference": "b927137cd5bd4d2f5d48a1ca71bc85006b99dbae"
+                "reference": "e588cb719539366c0e2f6017f975379cb73e9680"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/b927137cd5bd4d2f5d48a1ca71bc85006b99dbae",
-                "reference": "b927137cd5bd4d2f5d48a1ca71bc85006b99dbae",
+                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/e588cb719539366c0e2f6017f975379cb73e9680",
+                "reference": "e588cb719539366c0e2f6017f975379cb73e9680",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -6679,7 +6671,7 @@
                 "illuminate/contracts": "^5.2|^6|^7|^8",
                 "illuminate/http": "^5.2|^6|^7|^8",
                 "illuminate/support": "^5.2|^6|^7|^8",
-                "lcobucci/jwt": "^3.2",
+                "lcobucci/jwt": "<3.4",
                 "namshi/jose": "^7.0",
                 "nesbot/carbon": "^1.0|^2.0",
                 "php": "^5.5.9|^7.0"
@@ -6742,7 +6734,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-09-08T12:29:20+00:00"
+            "time": "2020-11-27T12:32:42+00:00"
         },
         {
             "name": "viacreative/sudo-su",
@@ -8264,16 +8256,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "7.0.10",
+            "version": "7.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "f1884187926fbb755a9aaf0b3836ad3165b478bf"
+                "reference": "52f55786aa2e52c26cd9e2db20aff2981e0f7399"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/f1884187926fbb755a9aaf0b3836ad3165b478bf",
-                "reference": "f1884187926fbb755a9aaf0b3836ad3165b478bf",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/52f55786aa2e52c26cd9e2db20aff2981e0f7399",
+                "reference": "52f55786aa2e52c26cd9e2db20aff2981e0f7399",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -8331,9 +8323,15 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/7.0.10"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/7.0.12"
             },
-            "time": "2019-11-20T13:55:58+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-27T06:08:35+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -8567,16 +8565,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.5.9",
+            "version": "8.5.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f5c8a5dd5e7e8d68d7562bfb48d47287d33937d6"
+                "reference": "3123601e3b29339b20129acc3f989cfec3274566"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f5c8a5dd5e7e8d68d7562bfb48d47287d33937d6",
-                "reference": "f5c8a5dd5e7e8d68d7562bfb48d47287d33937d6",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3123601e3b29339b20129acc3f989cfec3274566",
+                "reference": "3123601e3b29339b20129acc3f989cfec3274566",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -8598,7 +8596,7 @@
                 "phar-io/version": "^2.0.1",
                 "php": "^7.2",
                 "phpspec/prophecy": "^1.10.3",
-                "phpunit/php-code-coverage": "^7.0.10",
+                "phpunit/php-code-coverage": "^7.0.12",
                 "phpunit/php-file-iterator": "^2.0.2",
                 "phpunit/php-text-template": "^1.2.1",
                 "phpunit/php-timer": "^2.1.2",
@@ -8654,7 +8652,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/8.5.9"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/8.5.11"
             },
             "funding": [
                 {
@@ -8666,7 +8664,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-10T12:51:38+00:00"
+            "time": "2020-11-27T12:46:45+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

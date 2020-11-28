@@ -30,12 +30,22 @@ Route::prefix('v1')
                 ->name('socials.authorizations.store');
             Route::post('authorizations', 'AuthorizationsController@store')
                 ->name('authorizations.store');
-            Route::put('authorizations/current','AuthorizationsController@update')
+            Route::put('authorizations/current', 'AuthorizationsController@update')
                 ->name('authorizations.update');
-            Route::delete('authorizations/current','AuthorizationsController@destroy')
+            Route::delete('authorizations/current', 'AuthorizationsController@destroy')
                 ->name('authorizations.destroy');
         });
         Route::middleware('throttle:' . config('api.rate_limits.access'))->group(function () {
-
+            //游客访问的接口
+            Route::get('users/{user}', 'UsersController@show')->name('users.show');
+            //登陆用户访问接口
+            Route::middleware('auth:api')->group(function () {
+                //展示用户个人信息
+                Route::get('user', 'UsersController@me')->name('user.show');
+                //图片上传
+                Route::post('images','ImagesController@store')->name('images.store');
+                //用户个人资料更新
+                Route::patch('user','UsersController@update')->name('user.update');
+            });
         });
     });

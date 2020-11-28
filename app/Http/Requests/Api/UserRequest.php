@@ -21,19 +21,32 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name'=>'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/',
-            'password'=>'required|min:6|alpha_dash',
-            'verification_key'=>'required|string',
-            'verification_code'=>'required|string',
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'name'              => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/',
+                    'password'          => 'required|min:6|string',
+                    'verification_key'  => 'required|string',
+                    'verification_code' => 'required|string',
+                ];
+                break;
+            case 'PATCH':
+                $userId = auth('api')->id();
+                return [
+                    'name'            => 'between:3,25|regex:/^[A-Za-z0-9\-\_]+$/',
+                    'email'           => 'email|unique:users,email,' . $userId,
+                    'introduction'    => 'max:80',
+                    'avatar_image_id' => 'exists:images,id,type,avatar,user_id,' . $userId,
+                ];
+                break;
+        }
     }
 
     public function attributes()
     {
         return [
-            'verification_key'=>'短信验证码key',
-            'verification_code'=>'短信验证码',
+            'verification_key'  => '短信验证码key',
+            'verification_code' => '短信验证码',
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Api\UserRequest;
 use App\Http\Resources\UserResource;
+use App\Models\Image;
 use App\Models\User;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
@@ -28,6 +29,28 @@ class UsersController extends Controller
         ]);
         //清除验证码缓存
         Cache::forget($request->verification_key);
+        return $this->apiResponse((new UserResource($user))->showSensitiveFields());
+    }
+
+    public function show(User $user)
+    {
         return $this->apiResponse(new UserResource($user));
+    }
+
+    public function me(Request $request)
+    {
+        return $this->apiResponse((new UserResource($request->user()))->showSensitiveFields());
+    }
+
+    public function update(UserRequest $request)
+    {
+        $user=$request->user();
+        $attributes=$request->only('name','email','introduction');
+        if($id=$request->avatar_image_id){
+            $image=Image::find($id);
+            $attributes['avatar']=$image->path;
+        }
+        $user->update($attributes);
+        return $this->apiResponse((new UserResource($user))->showSensitiveFields());
     }
 }

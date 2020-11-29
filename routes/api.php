@@ -54,6 +54,12 @@ Route::prefix('v1')
                 Route::patch('user','UsersController@update')->name('user.update');
                 //发布，修改，删除话题
                 Route::resource('topics','TopicsController')->only('store','update','destroy');
+                //发表回复
+                Route::post('topics/{topic}/replies','RepliesController@store')
+                    ->name('topics.replies.store');
+                //删除回复
+                Route::delete('topics/{topic}/replies/{reply}','RepliesController@destroy')
+                    ->name('topics.replies.destroy');
             });
         });
     });

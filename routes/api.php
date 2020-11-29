@@ -38,6 +38,8 @@ Route::prefix('v1')
         Route::middleware('throttle:' . config('api.rate_limits.access'))->group(function () {
             //游客访问的接口
             Route::get('users/{user}', 'UsersController@show')->name('users.show');
+            //获取分类列表
+            Route::get('categories','CategoriesController@index')->name('categories.index');
             //登陆用户访问接口
             Route::middleware('auth:api')->group(function () {
                 //展示用户个人信息

@@ -42,6 +42,8 @@ Route::prefix('v1')
             Route::get('categories','CategoriesController@index')->name('categories.index');
             //话题列表详情
             Route::resource('topics','TopicsController')->only('index','show');
+            //某个用户发布的话题
+            Route::get('users/{user}/topics','TopicsController@userIndex')->name('user.topics.index');
             //登陆用户访问接口
             Route::middleware('auth:api')->group(function () {
                 //展示用户个人信息

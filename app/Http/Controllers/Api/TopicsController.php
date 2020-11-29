@@ -17,4 +17,11 @@ class TopicsController extends Controller
         $topic->save();
         return new TopicResource($topic);
     }
+
+    public function update(Topic $topic,TopicRequest $request)
+    {
+        $this->authorize('update',$topic);
+        $topic->update($request->all());
+        return new TopicResource($topic);
+    }
 }

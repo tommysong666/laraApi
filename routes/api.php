@@ -42,6 +42,10 @@ Route::prefix('v1')
             Route::get('categories','CategoriesController@index')->name('categories.index');
             //话题列表详情
             Route::resource('topics','TopicsController')->only('index','show');
+            //话题回复列表
+            Route::get('topics/{topic}/replies','RepliesController@index')->name('topics.replies.index');
+            //某个用户的回复列表
+            Route::get('users/{user}/replies','RepliesController@userIndex')->name('users.replies.index');
             //某个用户发布的话题
             Route::get('users/{user}/topics','TopicsController@userIndex')->name('user.topics.index');
             //登陆用户访问接口

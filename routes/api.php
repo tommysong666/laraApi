@@ -70,6 +70,12 @@ Route::prefix('v1')
                 //未读消息统计
                 Route::get('notifications/stats','NotificationsController@stats')
                     ->name('notifications.stats');
+                //标记消息为已读
+                Route::patch('user/read/notifications','NotificationsController@read')
+                    ->name('user.notifications.read');
+                //当前登陆用户权限
+                Route::get('user/permissions','PermissionsController@index')
+                    ->name('user.permissions.index');
             });
         });
     });

@@ -17,4 +17,10 @@ class NotificationsController extends Controller
     {
         return $this->apiResponse(['unread_count'=>$request->user()->notification_count]);
     }
+
+    public function read(Request $request)
+    {
+        $request->user()->markAsRead();
+        return $this->apiResponse(true);
+    }
 }

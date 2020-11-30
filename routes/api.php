@@ -34,6 +34,8 @@ Route::prefix('v1')
                 ->name('authorizations.update');
             Route::delete('authorizations/current', 'AuthorizationsController@destroy')
                 ->name('authorizations.destroy');
+            //资源推荐接口
+            Route::get('links','LinksController@index')->name('links.index');
         });
         Route::middleware('throttle:' . config('api.rate_limits.access'))->group(function () {
             //游客访问的接口
@@ -76,6 +78,7 @@ Route::prefix('v1')
                 //当前登陆用户权限
                 Route::get('user/permissions','PermissionsController@index')
                     ->name('user.permissions.index');
+
             });
         });
     });

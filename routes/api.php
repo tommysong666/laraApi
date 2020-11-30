@@ -38,7 +38,9 @@ Route::prefix('v1')
             Route::get('links','LinksController@index')->name('links.index');
         });
         Route::middleware('throttle:' . config('api.rate_limits.access'))->group(function () {
-            //游客访问的接口
+            /**
+             * 游客访问的接口
+             **/
             Route::get('users/{user}', 'UsersController@show')->name('users.show');
             //获取分类列表
             Route::get('categories','CategoriesController@index')->name('categories.index');
@@ -50,7 +52,11 @@ Route::prefix('v1')
             Route::get('users/{user}/replies','RepliesController@userIndex')->name('users.replies.index');
             //某个用户发布的话题
             Route::get('users/{user}/topics','TopicsController@userIndex')->name('user.topics.index');
-            //登陆用户访问接口
+            //边栏活跃用户
+            Route::get('actived/users','UsersController@activedIndex')->name('actived.users.index');
+            /**
+             * 登陆用户访问接口
+             **/
             Route::middleware('auth:api')->group(function () {
                 //展示用户个人信息
                 Route::get('user', 'UsersController@me')->name('user.show');

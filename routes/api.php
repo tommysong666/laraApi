@@ -64,8 +64,12 @@ Route::prefix('v1')
                 //删除回复
                 Route::delete('topics/{topic}/replies/{reply}','RepliesController@destroy')
                     ->name('topics.replies.destroy');
+                //通知消息列表
                 Route::get('notifications','NotificationsController@index')
                     ->name('notifications.index');
+                //未读消息统计
+                Route::get('notifications/stats','NotificationsController@stats')
+                    ->name('notifications.stats');
             });
         });
     });

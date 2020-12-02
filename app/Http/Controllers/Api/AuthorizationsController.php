@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\Api\AuthorizationRequest;
 use App\Http\Requests\Api\SocialAuthorizationRequest;
 use App\Models\User;
+use App\Traits\PassportToken;
 use GuzzleHttp\Psr7\ServerRequest;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,7 @@ use Zend\Diactoros\Response as Psr7Response;
  */
 class AuthorizationsController extends Controller
 {
+    use PassportToken;
     /**
      * 第三方登陆接口
      * @param $type
@@ -71,8 +73,10 @@ class AuthorizationsController extends Controller
                 }
                 break;
         }
-        $token = auth('api')->login($user);
-        return $this->apiResponse($this->respondToken($token));
+//        $token = auth('api')->login($user);
+        $token=$this->getBearerTokenByUser($user,1,false);
+//        return $this->apiResponse($this->respondToken($token));
+        return $this->apiResponse($token);
     }
 
     /**

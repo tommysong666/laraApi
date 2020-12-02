@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -21,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmailContract,JWTSubject
     use Notifiable {
         notify as protected laravelNotify;
     }
+    use HasApiTokens;
     public function notify($instance)
     {
         // 如果要通知的人是当前用户，就不必通知了！
@@ -104,5 +106,12 @@ class User extends Authenticatable implements MustVerifyEmailContract,JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function findForPassport($username)
+    {
+        filter_var($username,FILTER_VALIDATE_EMAIL)?$credentials['email']=$username
+            :$credentials['phone']=$username;
+        return self::where($credentials)->first();
     }
 }

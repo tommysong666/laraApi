@@ -6,10 +6,15 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\Api\AuthorizationRequest;
 use App\Http\Requests\Api\SocialAuthorizationRequest;
 use App\Models\User;
+use GuzzleHttp\Psr7\ServerRequest;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
+use League\OAuth2\Server\AuthorizationServer;
+use League\OAuth2\Server\Exception\OAuthServerException;
 use Overtrue\LaravelSocialite\Socialite;
 use Overtrue\Socialite\AccessToken;
+use Psr\Http\Message\ServerRequestInterface;
+use Zend\Diactoros\Response as Psr7Response;
 
 /**
  * Class AuthorizationsController
@@ -73,12 +78,20 @@ class AuthorizationsController extends Controller
     /**
      * 手机号或邮箱登陆
      * @param AuthorizationRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Psr\Http\Message\ResponseInterface
      * @throws AuthenticationException
      */
-    public function store(AuthorizationRequest $request)
+    public function store(AuthorizationRequest $originRequest,AuthorizationServer $server
+        ,ServerRequestInterface $serverRequest)
     {
-        $username = $request->username;
+        try {
+            return $server->respondToAccessTokenRequest($serverRequest,new Psr7Response)
+                ->withStatus(201);
+        }catch (OAuthServerException $e){
+            throw new AuthenticationException($e->getMessage());
+        }
+
+        /*$username = $request->username;
 
         filter_var($username, FILTER_VALIDATE_EMAIL) ?
             $credentials['email'] = $username :
@@ -89,18 +102,24 @@ class AuthorizationsController extends Controller
         if (!$token = Auth::guard('api')->attempt($credentials)) {
             throw new AuthenticationException(trans('auth.failed'));
         }
-        return $this->apiResponse($this->respondToken($token));
+        return $this->apiResponse($this->respondToken($token));*/
+
     }
 
 
     /**
      * 刷新token
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Psr\Http\Message\ResponseInterface
      */
-    public function update()
+    public function update(AuthorizationServer $server,ServerRequestInterface $serverRequest)
     {
-        $token=auth('api')->refresh();
-        return $this->apiResponse($this->respondToken($token));
+        try {
+            return $server->respondToAccessTokenRequest($serverRequest, new Psr7Response);
+        } catch (OAuthServerException $e) {
+            throw new AuthenticationException($e->getMessage());
+        }
+        /*$token=auth('api')->refresh();
+        return $this->apiResponse($this->respondToken($token));*/
     }
 
     /**
@@ -109,8 +128,14 @@ class AuthorizationsController extends Controller
      */
     public function destroy()
     {
-        auth('api')->logout();
-        return $this->apiResponse(true);
+        /*auth('api')->logout();
+        return $this->apiResponse(true);*/
+        if(auth('api')->check()){
+            auth('api')->user()->token()->revoke();
+            return response(null,204);
+        }else{
+            throw new AuthenticationException ('The token is Invalid');
+        }
     }
 
     /**

@@ -56,7 +56,7 @@ class TopicReplied extends Notification implements ShouldQueue
                     ->action('查看回复', $url);
     }
 
-    public function toJPush($notifiable,PushPayload $payload)
+    public function toJPush($notifiable,PushPayload $payload):PushPayload
     {
         return $payload
             ->setPlatform('all')

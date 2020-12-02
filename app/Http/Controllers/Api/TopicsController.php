@@ -74,7 +74,7 @@ class TopicsController extends Controller
     {
         $this->authorize('destroy', $topic);
         $topic->delete();
-        return $this->apiResponse(true);
+        return response(null,204);
     }
 
     /**

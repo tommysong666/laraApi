@@ -1,0 +1,2 @@
+Client ID: 1
+Client secret: pQtVUHoTQa4PN4hBygXjrWqzUBSEH5npZFg1zvK6

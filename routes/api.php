@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::prefix('v1')
     ->name('api.v1.')
+    ->middleware('change-locale')
     ->namespace('Api')
     ->group(function () {
         Route::middleware('throttle:' . config('api.rate_limits.sign'))->group(function () {
@@ -28,6 +29,7 @@ Route::prefix('v1')
             Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')
                 ->where('social_type', 'wechat')
                 ->name('socials.authorizations.store');
+            //手机号或邮箱登陆
             Route::post('authorizations', 'AuthorizationsController@store')
                 ->name('authorizations.store');
             Route::put('authorizations/current', 'AuthorizationsController@update')

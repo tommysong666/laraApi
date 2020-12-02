@@ -45,7 +45,7 @@ class UsersController extends Controller
     public function update(UserRequest $request)
     {
         $user=$request->user();
-        $attributes=$request->only('name','email','introduction');
+        $attributes=$request->only('name','email','introduction','registration_id');
         if($id=$request->avatar_image_id){
             $image=Image::find($id);
             $attributes['avatar']=$image->path;

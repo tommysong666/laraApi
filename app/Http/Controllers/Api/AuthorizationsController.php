@@ -67,7 +67,7 @@ class AuthorizationsController extends Controller
                 break;
         }
         $token = auth('api')->login($user);
-        return $this->apiResponse($this->respondToken($token));
+        return $this->apiResponse($token);
     }
 
     /**

@@ -101,7 +101,7 @@ return [
         ],
     ],
     'query' => [
-        'enabled' => env('LOG_QUERY', false),
+        'enabled' => env('LOG_QUERY', true),
 
         // Only record queries that are slower than the following time
         // Unit: milliseconds
